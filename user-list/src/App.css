@@ -13,8 +13,30 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+input {
+  height: 1.2rem;
+  font-size: 1rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3px;
+}
+input:hover {
+  transform: scale(1.1);
 }
 
+.button {
+  font-size: 1rem;
+}
+button:hover {
+  cursor: pointer;
+  background-color: darkslategray;
+  color: white;
+}
 
+nav {
+  padding: 2%;
+}
+nav:hover {
+  transform: scale(1.2);
+}

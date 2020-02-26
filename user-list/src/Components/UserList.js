@@ -1,5 +1,7 @@
 import React from "react";
 import { axiosWithAuth } from "../axiosAuth";
+import User from "./User";
+import { findRenderedComponentWithType } from "react-dom/test-utils";
 
 class UserList extends React.Component {
   state = {
@@ -12,11 +14,11 @@ class UserList extends React.Component {
 
   getData = () => {
     axiosWithAuth()
-      .get("/friends")
+      .get("/users")
       .then(res => {
         console.log(res);
         this.setState({
-          friends: res.data
+          users: res.data
         });
       })
       .catch(err => {
@@ -24,19 +26,26 @@ class UserList extends React.Component {
       });
   };
 
-  addUser = user => {
-    axiosWithAuth()
-      .post("http://localhost:5000/api/users", JSON.parse(JSON.stringify(user)))
-      .then(res => {
-        this.getData();
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
+  // addUser = user => {
+  //   axiosWithAuth()
+  //     .post("http://localhost:3000/api/users", JSON.parse(JSON.stringify(user)))
+  //     .then(res => {
+  //       this.getData();
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // };
 
   render() {
-    return <div></div>;
+    return (
+      <div>
+        {this.state.users.map(user => {
+          return;
+          <User key={user.id} data={user} />;
+        })}
+      </div>
+    );
   }
 }
 
